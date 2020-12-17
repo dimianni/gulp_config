@@ -14,6 +14,7 @@ const browserSync = require('browser-sync').create();
 const uglify = require('gulp-uglify-es').default;
 const autoprefixer = require('gulp-autoprefixer');
 const imagemin = require('gulp-imagemin');
+const webp = require('gulp-webp');
 const del = require('del');
 
 
@@ -120,11 +121,9 @@ function cleanDist() {
 /*	Function that compresses images; 
 ------------------------------------------------------*/
 function images() {
-    return src('app/images/**/*')
+    return src('app/images/*.{gif,svg}')
         .pipe(imagemin([
             imagemin.gifsicle({ interlaced: true }),
-            imagemin.mozjpeg({ quality: 90, progressive: true }),
-            imagemin.optipng({ optimizationLevel: 5 }),
             imagemin.svgo({
                 plugins: [
                     { removeViewBox: true },
@@ -135,7 +134,11 @@ function images() {
         .pipe(dest('dist/images'))
 }
 
-
+function webpImages() {
+    return src('app/images/*.{jpg,png}')
+        .pipe(webp({ quality: 100 }))
+        .pipe(dest('dist/images'))
+}
 
 
 
@@ -144,14 +147,15 @@ exports.scripts = scripts;
 exports.watching = watching;
 exports.browsersync = browsersync;
 exports.images = images;
+exports.webpImages = webpImages;
 exports.cleanDist = cleanDist;
 
 /*----------------------------------------------------*/
 /*	Initializes functions in parallel on 'gulp'
 ------------------------------------------------------*/
-exports.default = parallel(styles, scripts, browsersync, watching); 
+exports.default = parallel(styles, scripts, browsersync, watching);
 
 /*----------------------------------------------------*/
 /*	Initializes functions in series (sequence) on 'gulp build'
 ------------------------------------------------------*/
-exports.build = series(cleanDist, images, build); 
+exports.build = series(cleanDist, webpImages, images, build); 
