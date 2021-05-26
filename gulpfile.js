@@ -31,7 +31,7 @@ const del = require('del');
 ------------------------------------------------------*/
 function scripts() {
     return src([
-        'node_modules/jquery/dist/jquery.js', // npm i --save-dev jquery
+        // 'node_modules/**/.js', // any code from node_modules
         'app/js/main.js'
     ])
         .pipe(concat('main.min.js'))
