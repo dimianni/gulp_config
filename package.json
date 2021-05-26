@@ -1,12 +1,15 @@
 {
-  "name": "mygulp",
-  "version": "2.0.0",
+  "name": "my-gulp-configuration",
+  "version": "1.0.0",
   "description": "My Gulp Configuration (28 Nov 2020)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Dmytro Anikin",
+  "keywords": [
+    "gulp"
+  ],
+  "author": "Dmytro Anikin <dmytro.anikin@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.26.13",
@@ -17,7 +20,6 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^4.1.0",
     "gulp-uglify-es": "^2.0.0",
-    "gulp-webp": "^4.0.1",
-    "jquery": "^3.5.1"
+    "gulp-webp": "^4.0.1"
   }
 }
