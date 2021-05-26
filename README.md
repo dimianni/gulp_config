@@ -1,6 +1,6 @@
 # My Gulp Configuration
 
-This is a basic gulp configuration, which is perfectly suitable for landing page development and can be easily tweaked for any needs. 
+This is a basic gulp configuration, which is perfectly suitable for landing page development and can be easily tweaked for any needs. It was my core configuration that I used for development up until I have built my [webpack configuration](https://github.com/dimianni/my-webpack-configuration).
 
 ## To clone the repo, run the following command:
 
